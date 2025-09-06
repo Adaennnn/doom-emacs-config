@@ -11,6 +11,8 @@ A streamlined GTD (Getting Things Done) workflow optimized for efficiency and sc
 
 ## File Structure
 
+Make sure to check out the content of ~/org/*
+
 ```
 ~/org/ (git repository)
 ├── gtd/
@@ -39,7 +41,7 @@ NEXT → DONE      (complete task)
 NEXT → WAITING   (encounter blocker)
 WAITING → NEXT   (blocker resolved)
 ```
-
+Ideally, changing state should be done by cycling with TAB (or another easy keybind if TAB already assigned)
 ### Key Constraints
 - Only ONE `NEXT` action per project (maintain focus)
 - `WAITING` items must be reviewed weekly
