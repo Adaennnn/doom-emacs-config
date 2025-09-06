@@ -41,9 +41,17 @@ Determine the commit type based on changes:
 
 ### 3. **Identify Scope**
 Determine the module/component affected:
-- Module name (e.g., `decryption`, `customer-intel`)
-- Component name (e.g., `Button`, `FileUpload`)
-- Feature area (e.g., `auth`, `navigation`)
+
+**Doom Emacs Scopes:**
+- `gtd` - GTD system features and workflows
+- `org` - org-mode configurations and settings
+- `ui` - themes, modeline, fonts, visual elements
+- `keybind` - key mappings and which-key configurations
+- `module` - Doom module enable/disable changes
+- `lang` - language-specific configurations
+- `completion` - corfu, vertico, orderless settings
+- `evil` - vim bindings and evil-mode configurations
+- `config` - general configuration changes
 
 ## Commit Message Structure:
 
@@ -94,18 +102,18 @@ Based on staged changes, create message:
 #### Example 1: Feature Implementation
 ```bash
 git commit -m "$(cat <<'EOF'
-feat(customer-intel): Add customer search with fuzzy matching
+feat(gtd): Configure TODO/NEXT/WAITING/DONE task states
 
-- Implement fuzzy search algorithm for customer names
-- Add search debouncing for performance
-- Include tier-based filtering options
-- Update TypeScript interfaces for search results
+- Define custom task state sequence for GTD workflow
+- Configure state colors using Doom theme palette
+- Enable automatic timestamp logging for transitions
+- Set up drawer-based logging for better organization
 
-The search supports partial matches and handles special
-characters gracefully. Results are sorted by relevance
-and tier priority.
+Task states provide visual distinction and support proper
+GTD workflow transitions. Colors follow Doom dracula theme
+for consistency.
 
-Resolves #42
+Resolves #23
 EOF
 )"
 ```
@@ -113,16 +121,17 @@ EOF
 #### Example 2: Bug Fix
 ```bash
 git commit -m "$(cat <<'EOF'
-fix(decryption): Correct file size validation for edge cases
+fix(keybind): Resolve SPC prefix conflict with custom GTD bindings
 
-- Handle files exactly at 10MB limit
-- Fix byte calculation for different encodings
-- Add proper error messages for size violations
+- Move GTD bindings from SPC g to SPC o g prefix
+- Update capture template keybindings accordingly
+- Add proper which-key descriptions for new bindings
+- Test all keybind combinations for conflicts
 
-Previously, files at exactly 10MB were incorrectly rejected.
-This fix ensures the validation boundary is inclusive.
+The SPC g prefix was conflicting with git bindings in magit.
+Moving to SPC o g provides better namespace isolation.
 
-Fixes #38
+Fixes #45
 EOF
 )"
 ```
@@ -130,17 +139,17 @@ EOF
 #### Example 3: Multiple Related Changes
 ```bash
 git commit -m "$(cat <<'EOF'
-refactor(module-registry): Improve type safety and lazy loading
+refactor(org): Consolidate agenda and capture configurations
 
-- Add strict TypeScript types for module config
-- Implement proper error boundaries for modules
-- Optimize bundle splitting with dynamic imports
-- Update tests for new module structure
+- Move all capture templates to dedicated config section
+- Restructure agenda view definitions for clarity
+- Extract common org-mode settings to shared variables
+- Update file organization to follow Doom patterns
 
-This refactoring improves type safety throughout the module
-system and reduces initial bundle size by 15%.
+This refactoring improves maintainability and follows
+Doom's (after! org ...) pattern consistently throughout.
 
-Related to #35, #36
+Related to #27, #28
 EOF
 )"
 ```
@@ -176,20 +185,20 @@ git commit --amend -m "Updated message"
 For larger features, create logical commit sequence:
 
 ```bash
-# 1. Infrastructure/setup
-git commit -m "chore(customer-intel): Set up module structure and types"
+# 1. Core configuration
+git commit -m "feat(gtd): Add TODO task states and visual styling"
 
-# 2. Core implementation
-git commit -m "feat(customer-intel): Implement customer data service"
+# 2. Workflow integration
+git commit -m "feat(gtd): Configure capture templates and refile targets"
 
-# 3. UI components
-git commit -m "feat(customer-intel): Add customer profile components"
+# 3. User interface
+git commit -m "feat(gtd): Set up custom agenda views and dashboard"
 
-# 4. Tests
-git commit -m "test(customer-intel): Add comprehensive test coverage"
+# 4. Automation
+git commit -m "feat(gtd): Implement automatic git sync for org files"
 
 # 5. Documentation
-git commit -m "docs(customer-intel): Add usage documentation and examples"
+git commit -m "docs(gtd): Add GTD workflow guide and keybinding reference"
 ```
 
 ## Issue Linking:
