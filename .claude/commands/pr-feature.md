@@ -22,11 +22,11 @@ git diff ${1:-main}...HEAD --stat
 ### 2. **Quality Verification**
 Ensure all checks pass:
 ```bash
-npm run lint
-npx tsc --noEmit
-npm test -- --run
-npm run build
-npm run test:coverage
+doom doctor
+doom sync
+emacs --batch --eval "(require 'doom-start)"
+# Test configuration loading
+emacs --batch --eval "(org-mode)" --eval "(message \"Org-mode loaded successfully\")"
 ```
 
 ### 3. **Push to Remote**
@@ -62,8 +62,11 @@ Related to #[issue-number]
 - [ ] 🎨 Style update (formatting, renaming)
 - [ ] ♻️ Code refactor (no functional changes)
 - [ ] ⚡ Performance improvement
-- [ ] ✅ Test update
-- [ ] 🔧 Build configuration update
+- [ ] 🔧 Module configuration update
+- [ ] 🎯 GTD workflow enhancement
+- [ ] ⌨️ Keybinding update
+- [ ] 🎨 Theme/UI change
+- [ ] 📝 Org-mode configuration
 
 ## 📝 Description
 
@@ -96,42 +99,43 @@ Related to #[issue-number]
 
 ## 🏗️ Technical Details
 
-### Architecture Changes
-- [List any architectural decisions or patterns introduced]
+### Module Changes
+- [List any Doom modules enabled/disabled in init.el]
 
-### New Dependencies
-- [List any new npm packages added and why]
+### New Packages
+- [List any new packages added to packages.el and why]
 
-### Database Changes
-- [List any schema changes or migrations]
+### Configuration Changes
+- [List any new settings or customizations in config.el]
 
-### API Changes
-- [List any API endpoint changes]
+### Keybinding Changes
+- [List any new keybindings or modifications to existing ones]
 
 ## 🧪 Testing
 
-### Test Coverage
-- Current coverage: [X]%
-- New/Modified tests:
-  - `[test-file-1.test.ts]` - [what it tests]
-  - `[test-file-2.test.ts]` - [what it tests]
+### Configuration Validation
+- [ ] `doom doctor` passes without errors
+- [ ] `doom sync` completes successfully
+- [ ] Configuration loads without warnings
+- [ ] All custom functions work as expected
 
 ### Manual Testing Steps
 1. [Step 1 to test the feature]
 2. [Step 2 to test the feature]
 3. [Expected results]
 
-### Browser Testing
-- [ ] Chrome
-- [ ] Firefox
-- [ ] Safari
-- [ ] Edge
+### Emacs Testing
+- [ ] Fresh Emacs restart loads configuration
+- [ ] No conflicts with existing keybindings
+- [ ] GTD workflow functions properly
+- [ ] Org-mode features work as intended
 
 ## 📊 Performance Impact
 
-- Bundle size change: [+/- X KB]
-- Load time impact: [negligible/improved/slight increase]
-- Memory usage: [no change/optimized]
+- Startup time change: [negligible/improved/slight increase]
+- Memory usage: [no change/optimized/slight increase]
+- Module loading impact: [minimal/noticeable]
+- Configuration complexity: [unchanged/simplified/increased]
 
 ## 🔒 Security Considerations
 
@@ -140,12 +144,12 @@ Related to #[issue-number]
 - [ ] No sensitive data exposed
 - [ ] Security best practices followed
 
-## ♿ Accessibility
+## ♿ Usability
 
-- [ ] Keyboard navigation works
-- [ ] Screen reader tested
-- [ ] ARIA labels added where needed
-- [ ] Color contrast meets WCAG standards
+- [ ] Keybindings are intuitive and discoverable
+- [ ] Which-key descriptions are clear
+- [ ] Color scheme provides good contrast
+- [ ] Configuration follows Doom conventions
 
 ## 📚 Documentation
 
@@ -156,24 +160,24 @@ Related to #[issue-number]
 
 ## ✅ Checklist
 
-### Code Quality
-- [ ] My code follows the project's style guidelines
+### Configuration Quality
+- [ ] My configuration follows Doom conventions
 - [ ] I have performed a self-review
-- [ ] My code is DRY and follows SOLID principles
-- [ ] I have commented hard-to-understand areas
-- [ ] I have removed console.logs and debug code
+- [ ] Configuration is well-organized and documented
+- [ ] I have commented complex elisp code
+- [ ] I have removed debug/test code
 
-### Testing
-- [ ] I have added tests for new functionality
-- [ ] All new and existing tests pass
+### Validation
+- [ ] Configuration loads without errors
+- [ ] All new functionality works as intended
 - [ ] I have tested edge cases
-- [ ] I have tested error scenarios
+- [ ] I have tested with fresh Doom installation
 
 ### Project Standards
-- [ ] No TypeScript errors (`npx tsc --noEmit`)
-- [ ] No linting errors (`npm run lint`)
-- [ ] Build succeeds (`npm run build`)
-- [ ] Tests pass (`npm test`)
+- [ ] No configuration errors (`doom doctor`)
+- [ ] Sync completes successfully (`doom sync`)
+- [ ] Emacs starts without warnings
+- [ ] GTD workflow functions properly
 
 ## 🚦 Review Focus Areas
 

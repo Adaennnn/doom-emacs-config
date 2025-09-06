@@ -43,6 +43,23 @@
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
 
+;; GTD Task States Configuration
+(after! org
+  ;; Define custom TODO states for GTD workflow
+  (setq org-todo-keywords
+        '((sequence "TODO(t)" "NEXT(n)" "WAITING(w)" "|" "DONE(d)")))
+  
+  ;; Configure colors and visual styling for task states
+  (setq org-todo-keyword-faces
+        '(("TODO" . (:foreground "#ff6c6b" :weight bold))
+          ("NEXT" . (:foreground "#98be65" :weight bold))
+          ("WAITING" . (:foreground "#ECBE7B" :weight bold))
+          ("DONE" . (:foreground "#51afef" :weight bold))))
+  
+  ;; Enable automatic timestamp logging for state transitions
+  (setq org-log-done 'time
+        org-log-into-drawer t))
+
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
 ;; `after!' block, otherwise Doom's defaults may override your settings. E.g.
